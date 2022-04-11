@@ -1,0 +1,102 @@
+<html>
+    <!--DRG-->
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "bootstrap.min.css" %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <style>
+            body {
+                background-color: rgb(221 246 254);
+            }
+            .grey {
+                background-color: rgb(255 255 255);
+            }
+        </style>
+        <script src="{% static "jquery-2.2.4.min.js" %}"></script>
+        <script src="{% static "form-loader.js" %}"></script>
+    </head>
+    <body>
+
+        <div class="container-fluid pt-2">
+            <h2>Estimador de precios</h2>
+            <p>Estime el precio de su coche mediante inteligencia artificial.</p>
+            <p><i>* El formulario tiene valores por defecto para probar mas rapidamente.</i></p>
+            <p><i>* El precio de los datos por defecto es de 35.900€.</i></p>
+        </div>
+        
+        <div class="container-fluid">
+            <div id="error" class="row mb-2"></div>
+        </div>
+
+        <div class="container-fluid">
+            <form method="POST" id="post-form">
+                {% csrf_token %}
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label for="km">Kilometros</label>
+                        <input required type="number" step="any" class="form-control" id="km" value="20826">
+                    </div>
+                    <div class="col-4">
+                        <label for="make">Marca</label>
+                        <select required id="make" name="make" class="form-control"></select>
+                    </div>
+                    <div class="col-4">
+                        <label for="transmissionType">Transmisión</label>
+                        <select required id="transmissionType" name="transmissionType" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label for="year">Año</label>
+                        <input required type="number" step="any" class="form-control" id="year" value="2019">
+                    </div>
+                    <div class="col-4">
+                        <label for="seller_type">Tipo vendedor</label>
+                        <select required id="seller_type" name="seller_type" class="form-control"></select>
+                    </div>
+                    <div class="col-4">
+                        <label for="bodyType">Cuerpo del coche</label>
+                        <select required id="bodyType" name="bodyType" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label for="cubicCapacity">Capacidad cubica</label>
+                        <input required type="number" step="any" class="form-control" id="cubicCapacity" value="2143">
+                    </div>
+                    <div class="col-4">
+                        <label for="hp">Caballos</label>
+                        <input required type="number" step="any" class="form-control" id="hp" value="160">
+                    </div>
+                    <div class="col-4">
+                        <label for="acceleration">Aceleración (0-100km/h)</label>
+                        <input required type="number" step="any" class="form-control" id="acceleration" value="8.8">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label for="length">Largo (En milimetros)</label>
+                        <input required type="number" step="any" class="form-control" id="length" value="4687">
+                    </div>
+                    <div class="col-6">
+                        <label for="width">Ancho (En milimetros)</label>
+                        <input required type="width" step="any" class="form-control" id="width" value="1903">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Estimar precio</button>
+
+            </form>
+        </div>
+        
+        <div class="container-fluid">
+            <div id="response" class="row mb-2"></div>
+        </div>
+
+    </body>
+
+</html>

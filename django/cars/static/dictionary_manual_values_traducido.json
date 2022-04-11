@@ -1,0 +1,47 @@
+{
+	"make": {
+		"ALFA ROMEO": 500,
+		"AUDI": 1500,
+		"MAZDA": 2500,
+		"BMW": 3500,
+		"CITROEN": 4500,
+		"DACIA": 5500,
+		"FIAT": 6500,
+		"FORD": 7500,
+		"HONDA": 8500,
+		"HYUNDAI": 9500,
+		"JAGUAR": 10500,
+		"JEEP": 11500,
+		"KIA": 12500,
+		"LEXUS": 13500,
+		"MERCEDES-BENZ": 14500,
+		"MITSUBISHI": 15500,
+		"MINI": 16500,
+		"NISSAN": 17500,
+		"PORSCHE": 18500,
+		"OPEL": 19500,
+		"SKODA": 20500,
+		"PEUGEOT": 21500,
+		"VOLVO": 22500,
+		"RENAULT": 23500,
+		"SEAT": 24500,
+		"TOYOTA": 25500,
+		"VOLKSWAGEN": 26500
+	},
+	"transmissionType": {
+		"Automática": 0,
+		"Manual": 1
+	},
+	"seller_type": {
+		"Profesional": 0,
+		"Particular": 1
+	},
+	"bodyType": {
+		"4X4": 500,
+		"SEDAN": 700,
+		"FAMILIAR": 900,
+		"CABRIO": 1100,
+		"COUPE": 1300,
+		"MINIVAN": 1500
+	}
+}
