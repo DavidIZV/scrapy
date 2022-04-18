@@ -6,6 +6,7 @@ from os import walk
 import pickle
 import os
 import pandas as pd
+import boto3
 
 def get_models_predictions(obj_car):
     models_names=get_models_paths('/models/learners/')
@@ -18,7 +19,31 @@ def get_neural_network_predictions(obj_car):
     return predict_with_models(models, obj_car)
 
 def get_aws_predictions(obj_car):
-    return None
+    prediction_aws = None
+    try:
+        credentials = get_credentials()
+        endpoint ='CochesNetAwsExpEndPoint'
+        bucket='sagemaker-us-east-1-033405215847'
+        client = boto3.Session(
+            aws_access_key_id=credentials['aws_access_key_id'],
+            aws_secret_access_key=credentials['aws_secret_access_key'],
+            aws_session_token=credentials['aws_session_token'],
+            region_name='us-east-1'
+        ).client('sagemaker-runtime')
+        coche = obj_car.to_csv()
+        response = client.invoke_endpoint(EndpointName = endpoint, ContentType = 'text/csv', Accept = 'text/csv', Body = coche)
+        prediction_aws = response['Body'].read().decode('utf-8')
+    except Exception as e:
+        print(e)
+    return prediction_aws
+
+def get_credentials():
+    myvars = {}
+    with open(os.path.dirname(__file__) + "/aws_credentials.txt") as myfile:
+        for line in myfile:
+            name, var = line.partition("=")[::2]
+            myvars[name.strip()] = str(var).replace('\n', '')
+    return myvars
 
 def get_list_loads_models(models_names):
     models=[]

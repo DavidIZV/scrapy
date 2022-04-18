@@ -41,6 +41,13 @@ class Car(models.Model):
     def to_dict(this):
         return model_to_dict(this)
 
+    def to_csv(this):
+        csv_str = ''
+        for key,value in model_to_dict(this).items():
+            if key != 'id' and key != 'price':
+                csv_str = csv_str + str(value) + ','
+        return csv_str[0:len(csv_str)-1]
+
     def to_dict_for_pd_not_price_and_id(this):
         result=model_to_dict(this)
         result.pop('id')
