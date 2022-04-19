@@ -39,7 +39,7 @@ def get_aws_predictions(obj_car):
 
 def get_credentials():
     myvars = {}
-    with open(os.path.dirname(__file__) + "/aws_credentials.txt") as myfile:
+    with open(os.path.dirname(__file__) + "/.aws_credentials") as myfile:
         for line in myfile:
             name, var = line.partition("=")[::2]
             myvars[name.strip()] = str(var).replace('\n', '')
